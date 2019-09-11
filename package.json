@@ -1,7 +1,7 @@
 {
   "name": "exploring-perlin-noise",
   "version": "1.0.0",
-  "description": "I'm doing shitty patterns using Perlin noise",
+  "description": "Perlin/Simplex noise map generation",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
