@@ -1,0 +1,19 @@
+{
+  "name": "exploring-perlin-noise",
+  "version": "1.0.0",
+  "description": "I'm doing shitty patterns using Perlin noise",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "noisejs": "2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "@types/noisejs": "0.0.28",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": []
+}
