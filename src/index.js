@@ -1,3 +1,3 @@
-import exp2 from './exp2'
+import canvas from './canvas.js'
 
-new exp2()
+console.log(new canvas())
