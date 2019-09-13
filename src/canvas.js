@@ -7,17 +7,17 @@ export default class App {
 
     let drag = e => this.drag(e)
 
-    this.canvas.addEventListener('wheel', e => this.scroll(e), true)
-    this.canvas.addEventListener('touchmove', e => this.scroll(e), true)
-    this.canvas.addEventListener('mousedown', function(e) {
+    document.addEventListener('wheel', e => this.scroll(e), true)
+    document.addEventListener('touchmove', e => this.scroll(e), true)
+    document.addEventListener('mousedown', function(e) {
       this.addEventListener('mousemove', drag)
     })
 
-    this.canvas.addEventListener('mouseup', function(e) {
+    document.addEventListener('mouseup', function(e) {
       this.removeEventListener('mousemove', drag)
     })
 
-    this.canvas.ondblclick = e => console.log(this)
+    document.ondblclick = e => console.log(this)
 
     this.zoom = 3
     this.naturalZoom = 12
