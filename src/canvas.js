@@ -7,17 +7,17 @@ export default class App {
 
     let drag = e => this.drag(e)
 
-    document.addEventListener('wheel', e => this.scroll(e), true)
-    document.addEventListener('touchmove', e => this.scroll(e), true)
-    document.addEventListener('mousedown', function(e) {
+    this.canvas.addEventListener('wheel', e => this.scroll(e), true)
+    this.canvas.addEventListener('touchmove', e => this.scroll(e), true)
+    this.canvas.addEventListener('mousedown', function(e) {
       this.addEventListener('mousemove', drag)
     })
 
-    document.addEventListener('mouseup', function(e) {
+    this.canvas.addEventListener('mouseup', function(e) {
       this.removeEventListener('mousemove', drag)
     })
 
-    document.ondblclick = e => console.log(this)
+    this.canvas.ondblclick = e => console.log(this)
 
     this.zoom = 3
     this.naturalZoom = 12
@@ -31,11 +31,14 @@ export default class App {
     this.drawing = false
 
     this.draw()
-
-    console.log(new Date())
   }
 
   drag(evt) {
+    if (! evt.buttons & 1) {
+      this.removeEventListener('mousemove', this.drag)
+      return
+    }
+
     // console.log(evt)
     let oldx = this.xOffset
     let oldy = this.yOffset
@@ -59,7 +62,8 @@ export default class App {
     else this.xOffset += (this.scrollSpeed / this.zoom) * pos
 
     this.draw()
-    return false
+
+    evt.preventDefault()
   }
 
   draw() {
