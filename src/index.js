@@ -4,7 +4,12 @@ let c = new canvas()
 
 let commands = {
   coords: self =>
-    self.echo(`${Math.round(c.xOffset)}, ${Math.round(c.yOffset)}`)
+    self.echo(`${Math.round(c.xOffset)}, ${Math.round(c.yOffset)}`),
+  jump: (self, args) => {
+    c.xOffset = Number.parseFloat(args[1])
+    c.yOffset = Number.parseFloat(args[2])
+    c.draw()
+  }
 }
 
 $('#terminal').terminal(
@@ -14,7 +19,11 @@ $('#terminal').terminal(
       let exe = commands[args[0]]
 
       if (exe) {
-        exe(this, args)
+        try {
+          exe(this, args)
+        } catch (err) {
+          this.error(err.message)
+        }
       } else {
         this.echo('unknown command')
       }
