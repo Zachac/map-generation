@@ -9,6 +9,26 @@ let commands = {
     c.xOffset = Number.parseFloat(args[1])
     c.yOffset = Number.parseFloat(args[2])
     c.draw()
+  },
+  go: (self, args) => {
+    switch (args[1]) {
+      case 'n':
+        c.xOffset -= 30
+        break
+      case 's':
+        c.xOffset += 30
+        break
+      case 'w':
+        c.yOffset -= 30
+        break
+      case 'e':
+        c.yOffset += 30
+        break
+      default:
+        throw new Error('Excpected direction n/s/e/w')
+    }
+
+    c.draw()
   }
 }
 
